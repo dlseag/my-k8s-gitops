@@ -4,7 +4,7 @@ image:
   tag: "5d3d69f6a995c8419761bdaeaca9bbef21f8daac"
 
 service:
-  port: 3001
+  port: 8080
 
 resources:
   limits:
