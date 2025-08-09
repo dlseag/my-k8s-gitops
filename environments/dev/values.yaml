@@ -2,7 +2,7 @@
 replicaCount: 1 # 开发环境资源较少
 
 image:
-  tag: "dev-branch" # 使用开发分支镜像
+  tag: "5d3d69f6a995c8419761bdaeaca9bbef21f8daac" # 使用开发分支镜像
 
 service:
   port: 3000 # 开发环境端口
