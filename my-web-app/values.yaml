@@ -9,12 +9,13 @@ replicaCount: 2
 image:
   repository: 960832096879.dkr.ecr.ap-northeast-1.amazonaws.com/my-web-api
   # This sets the pull policy for images.
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: 5d3d69f6a995c8419761bdaeaca9bbef21f8daac
+  pullPolicy:
+    IfNotPresent
+    # Overrides the image tag whose default is the chart appVersion.
+  tag: "1758969658"
 
 # This is for the secrets for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
-imagePullSecrets: []
+imagePullSecrets: [name: ecr-registry-key]
 # This is to override the chart name.
 nameOverride: ""
 fullnameOverride: ""
@@ -60,14 +61,15 @@ service:
 
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
-  enabled: false
-  className: ""
+  enabled: true
+  className: "alb"
   annotations:
-    {}
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: chart-example.local
+    - host: api.dev.example.com # <-- 请替换为您的域名或使用临时域名
       paths:
         - path: /
           pathType: ImplementationSpecific
@@ -125,3 +127,10 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+extraEnvs:
+  - name: SECRET_KEY
+    valueFrom:
+      secretKeyRef:
+        name: my-app-secret
+        key: SECRET_KEY
