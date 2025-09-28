@@ -62,30 +62,23 @@ service:
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
   enabled: true
-  className: "nginx"
+  className: ""
   annotations:
     {}
-    # alb.ingress.kubernetes.io/scheme: internet-facing
-    # alb.ingress.kubernetes.io/target-type: ip
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
-  hosts:
-    - host: myapi.abby34.com # <-- 请替换为您的域名或使用临时域名
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
+  host: myapi.abby34.com
+  paths:
+    - path: /
+      pathType: ImplementationSpecific
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
-  #      - api.chart-example.local
 
-# -- Add the following section for the application secret
 appSecret:
   enabled: true
-  # -- The raw, unencoded secret value that the application will use.
-  # -- This will be base64 encoded by the Helm template.
-  apiKey: "my-super-secret-key-12345"
+  apiKey: "my-super-secret-key"
 
 resources:
   {}
