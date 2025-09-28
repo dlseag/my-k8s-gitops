@@ -70,7 +70,7 @@ ingress:
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: api.dev.example.com # <-- 请替换为您的域名或使用临时域名
+    - host: myapi.abby34.com # <-- 请替换为您的域名或使用临时域名
       paths:
         - path: /
           pathType: ImplementationSpecific
