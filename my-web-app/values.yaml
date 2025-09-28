@@ -10,7 +10,7 @@ image:
   repository: 960832096879.dkr.ecr.ap-northeast-1.amazonaws.com/my-web-api
   # This sets the pull policy for images.
   pullPolicy:
-    IfNotPresent
+    Always
     # Overrides the image tag whose default is the chart appVersion.
   tag: "1758969658"
 
