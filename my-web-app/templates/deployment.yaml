@@ -54,7 +54,7 @@ spec:
               port: http
           env:
             {{- if .Values.appSecret.enabled }}
-            - name: MY_APP_SECRET
+            - name: SECRET_KEY
               valueFrom:
                 secretKeyRef:
                   name: {{ include "my-web-app.fullname" . }}-secret
