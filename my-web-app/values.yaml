@@ -78,6 +78,14 @@ ingress:
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
+  #      - api.chart-example.local
+
+# -- Add the following section for the application secret
+appSecret:
+  enabled: true
+  # -- The raw, unencoded secret value that the application will use.
+  # -- This will be base64 encoded by the Helm template.
+  apiKey: "my-super-secret-key-12345"
 
 resources:
   {}
